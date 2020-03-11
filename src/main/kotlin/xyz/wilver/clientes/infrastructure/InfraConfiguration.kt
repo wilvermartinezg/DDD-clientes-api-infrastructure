@@ -14,6 +14,8 @@ import xyz.wilver.clientes.infrastructure.repository.CustomerBalanceRepository
 import xyz.wilver.clientes.infrastructure.repository.CustomerBalanceRepositoryImpl
 import xyz.wilver.clientes.infrastructure.repository.CustomerRepository
 import xyz.wilver.clientes.infrastructure.repository.CustomerRepositoryImpl
+import xyz.wilver.clientes.infrastructure.services.EmailService
+import xyz.wilver.clientes.infrastructure.services.EmailServiceImpl
 
 @Configuration
 @EnableJpaRepositories(basePackages = ["xyz.wilver.clientes.infrastructure.hibernate.repo"])
@@ -47,6 +49,11 @@ class InfraConfiguration {
     @Bean
     fun customerBalanceService(customerBalanceRepository: CustomerBalanceRepository): CustomerBalanceService {
         return CustomerBalanceService(customerBalanceRepository)
+    }
+
+    @Bean
+    fun emailService(): EmailService {
+        return EmailServiceImpl()
     }
 
 }
